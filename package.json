@@ -6,7 +6,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "dependencies": {
-    "declarative-promise": "^0.1.4"
+    "declarative-promise": "^0.1.7"
   },
   "devDependencies": {
     "babel-tape-runner": "^1.2.0",
