@@ -2,15 +2,15 @@
  * Imports
  */
 
-var DeclarativePromise = require('declarative-promise')
+import DeclarativePromise from 'declarative-promise'
 
 /**
  * Cookie action creator
  */
 
 function cookie (name, value) {
-  var effect = {name: name}
-  var action = {type: 'EFFECT', payload: effect}
+  const effect = {name}
+  const action = {type: 'EFFECT', payload: effect}
 
   if (arguments.length === 2) {
     effect.type = 'SET_COOKIE'
@@ -26,4 +26,4 @@ function cookie (name, value) {
  * Exports
  */
 
-module.exports = cookie
+export default cookie
