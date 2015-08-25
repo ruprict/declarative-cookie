@@ -4,13 +4,14 @@
 
 import test from 'tape'
 import cookie from '../src'
+import createEffect from 'declarative-effect'
 
 /**
  * Tests
  */
 
 test('should work', ({deepEqual, end}) => {
-  deepEqual(cookie('test').toJSON(), {type: 'EFFECT', payload: {type: 'GET_COOKIE', name: 'test'}, meta: {then: []}})
-  deepEqual(cookie('test', 'testing').toJSON(), {type: 'EFFECT', payload: {type: 'SET_COOKIE', name: 'test', value: 'testing'}, meta: {then: []}})
+  deepEqual(cookie('test'), createEffect({type: 'GET_COOKIE', name: 'test'}))
+  deepEqual(cookie('test', 'testing'), createEffect({type: 'SET_COOKIE', name: 'test', value: 'testing'}))
   end()
 })

@@ -10,7 +10,7 @@
     "postpublish": "rm -rf lib"
   },
   "dependencies": {
-    "declarative-promise": "^0.1.7"
+    "declarative-effect": "^0.1.3"
   },
   "devDependencies": {
     "babel": "^5.8.21",

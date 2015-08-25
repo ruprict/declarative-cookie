@@ -2,7 +2,7 @@
  * Imports
  */
 
-import DeclarativePromise from 'declarative-promise'
+import createEffect from 'declarative-effect'
 
 /**
  * Cookie action creator
@@ -10,7 +10,6 @@ import DeclarativePromise from 'declarative-promise'
 
 function cookie (name, value) {
   const effect = {name}
-  const action = {type: 'EFFECT', payload: effect}
 
   if (arguments.length === 2) {
     effect.type = 'SET_COOKIE'
@@ -19,7 +18,7 @@ function cookie (name, value) {
     effect.type = 'GET_COOKIE'
   }
 
-  return new DeclarativePromise(action)
+  return createEffect(effect)
 }
 
 /**
