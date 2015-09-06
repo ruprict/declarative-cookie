@@ -2,7 +2,7 @@
   "name": "declarative-cookie",
   "description": "Action creator for redux-effects-cookie",
   "repository": "git://github.com/redux-effects/declarative-cookie.git",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
