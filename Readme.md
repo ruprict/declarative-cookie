@@ -28,7 +28,7 @@ const setAuthToken = createAction('SET_AUTH_TOKEN')
 
 function initializeAuth () {
   return cookie('authToken')
-    .then(setAuthToken)
+    .step(setAuthToken)
 }
 ```
 
@@ -40,7 +40,7 @@ import fetch from 'declarative-fetch'
 
 function login (username, password) {
   return fetch('/user/login', {method: 'POST', body: {username, password}})
-    .then(res => cookie('authToken', res.token))
+    .step(res => cookie('authToken', res.token))
 }
 ```
 
