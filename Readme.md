@@ -14,21 +14,21 @@ Params:
   * name - Cookie name to get/set
   * value - Value to set
 
-If you pass one argument, it performs a GET_COOKIE operation that returns a [declarative-promise](https://github.com/redux-effects/declarative-promise) for the value.  If you pass two arguments, it sets the value of the cookie, and also returns a declarative promise for the new value.
+If you pass one argument, it returns an action that retrieves a cookie by name.  If you pass two arguments, it returns an action that sets the value of the cookie.
 
 ## Example
 
-### Getting a cookie
+### Getting a cookie (using [bind-effect](https://github.com/redux-effects/bind-effect) for composition)
 
 ```javascript
+import bind from 'bind-effect'
 import cookie from 'declarative-cookie'
 import {createAction} from 'redux-actions'
 
 const setAuthToken = createAction('SET_AUTH_TOKEN')
 
 function initializeAuth () {
-  return cookie('authToken')
-    .step(setAuthToken)
+  return bind(cookie('authToken'), setAuthToken) // = {type: 'EFFECT', payload: {type: 'GET_COOKIE'}, meta: {steps: [[setAuthToken]}}
 }
 ```
 
@@ -39,8 +39,8 @@ import cookie from 'declarative-cookie'
 import fetch from 'declarative-fetch'
 
 function login (username, password) {
-  return fetch('/user/login', {method: 'POST', body: {username, password}})
-    .step(res => cookie('authToken', res.token))
+  return bind(fetch('/user/login', {method: 'POST', body: {username, password}}),
+    ({token}) => cookie('authToken', token))
 }
 ```
 

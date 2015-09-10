@@ -1,10 +1,4 @@
 /**
- * Imports
- */
-
-import createEffect from 'declarative-effect'
-
-/**
  * Cookie action creator
  */
 
@@ -19,7 +13,10 @@ function cookie (name, value, opts) {
     effect.type = 'GET_COOKIE'
   }
 
-  return createEffect(effect)
+  return {
+    type: 'EFFECT',
+    payload: effect
+  }
 }
 
 /**
