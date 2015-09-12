@@ -28,7 +28,7 @@ import {createAction} from 'redux-actions'
 const setAuthToken = createAction('SET_AUTH_TOKEN')
 
 function initializeAuth () {
-  return bind(cookie('authToken'), setAuthToken) // = {type: 'EFFECT', payload: {type: 'GET_COOKIE'}, meta: {steps: [[setAuthToken]}}
+  return bind(cookie('authToken'), setAuthToken) // = {type: 'GET_COOKIE', payload: {name: 'authToken'}, meta: {steps: [[setAuthToken]}}
 }
 ```
 
@@ -45,9 +45,6 @@ function login (username, password) {
 ```
 
 This uses the [declarative-fetch](https://github.com/redux-effects/declarative-fetch) package to send a login request, and then sets the auth token in a cookie if it is successful.
-
-
-
 
 ## License
 

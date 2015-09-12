@@ -2,21 +2,10 @@
  * Cookie action creator
  */
 
-function cookie (name, value, opts) {
-  const effect = {name}
-
-  if (arguments.length > 1) {
-    if (opts) effect.meta = opts
-    effect.type = 'SET_COOKIE'
-    effect.value = value
-  } else {
-    effect.type = 'GET_COOKIE'
-  }
-
-  return {
-    type: 'EFFECT',
-    payload: effect
-  }
+function cookie (name, value, opts={}) {
+  return arguments.length > 1
+    ? {type: 'SET_COOKIE', payload: {name, value, opts}}
+    : {type: 'GET_COOKIE', payload: {name}}
 }
 
 /**
